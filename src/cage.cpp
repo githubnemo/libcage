@@ -44,7 +44,7 @@ namespace libcage {
                                         bool is_timeout)
         {
                 int len = pbuf->get_len();
-                
+
                 if (len < (int)sizeof(msg_hdr)) {
                         return;
                 }
@@ -162,13 +162,13 @@ namespace libcage {
                         }
                         break;
                 case type_dht_find_value:
-                        if (len >= (int)(sizeof(msg_dht_find_value) - 
+                        if (len >= (int)(sizeof(msg_dht_find_value) -
                                          sizeof(uint32_t))) {
                                 m_cage.m_dht.recv_find_value(buf, len, from);
                         }
                         break;
                 case type_dht_find_value_reply:
-                        if (len >= (int)(sizeof(msg_dht_find_value_reply) - 
+                        if (len >= (int)(sizeof(msg_dht_find_value_reply) -
                                          sizeof(uint32_t))) {
                                 m_cage.m_dht.recv_find_value_reply(buf, len,
                                                                    from);
@@ -197,7 +197,7 @@ namespace libcage {
                         }
                         break;
                 case type_proxy_get:
-                        if (len >= (int)(sizeof(msg_proxy_get) - 
+                        if (len >= (int)(sizeof(msg_proxy_get) -
                                          sizeof(uint32_t))) {
                                 m_cage.m_proxy.recv_get(buf, len);
                         }
@@ -308,7 +308,7 @@ namespace libcage {
         {
                 return m_rdp.send(desc, buf, len);
         }
-        
+
         void
         cage::rdp_receive(int desc, void *buf, int *len)
         {

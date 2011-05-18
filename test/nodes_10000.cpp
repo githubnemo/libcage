@@ -174,7 +174,7 @@ main(int argc, char *argv[])
         }
 
         sleep(1);
-                
+
         for (i = 0; i < proc_num; i++) {
                 pid = fork();
                 if (pid == 0) {

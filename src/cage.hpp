@@ -128,7 +128,7 @@ namespace libcage {
                 class rdp_output {
                 public:
                         cage &m_cage;
-                        
+
                         rdp_output(cage &c) : m_cage(c) { }
 
                         void operator() (id_ptr id_dst, packetbuf_ptr pbuf);

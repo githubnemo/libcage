@@ -108,7 +108,7 @@ static const char * const ERR_GET               = "409";
      400 | 401,COMMENT
      405 | 406,join,NODE_NAME,HOST,PORT,COMMENT
 
-  put,NODE_NAME,KEY,VALUE,TTL | 
+  put,NODE_NAME,KEY,VALUE,TTL |
   put,NODE_NAME,KEY,VALUE,TTL,unique
   -> 203,put,NODE_NAME,KEY,VALUE,TTL |
      400 | 401,COMMENT |
@@ -332,7 +332,7 @@ do_command(int sockfd, std::string command)
                 char result[1024];
 
                 // format: 400,COMMENT
-                snprintf(result, sizeof(result), 
+                snprintf(result, sizeof(result),
                          "400,unknown command. cannot recognize '%s'\n",
                          it->c_str());
                 send(sockfd, result, strlen(result), 0);
@@ -493,7 +493,7 @@ process_new(int sockfd, esc_tokenizer::iterator &it,
 
         // send result
         // format: 200,new,NODE_NAME,PORT_NUMBER
-        snprintf(result, sizeof(result), "%s,new,%s,%d\n", 
+        snprintf(result, sizeof(result), "%s,new,%s,%d\n",
                  SUCCEEDED_NEW, esc_node_name.c_str(), port);
 
         send(sockfd, result, strlen(result), 0);

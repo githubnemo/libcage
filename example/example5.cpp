@@ -94,7 +94,7 @@ server_callback::operator() (int desc, libcage::rdp_addr addr,
                 for (;;) {
                         len = sizeof(num);
                         m_cage.rdp_receive(desc, &num, &len);
-                        
+
                         if (len <= 0)
                                 break;
 
