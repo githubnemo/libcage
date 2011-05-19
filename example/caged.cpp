@@ -556,7 +556,7 @@ public:
         int         port;
         int         sockfd;
 
-        void operator() (bool is_join) {
+        void operator() (bool is_join, std::vector<libcage::cageaddr> &nodes) {
                 sock2ev_type::iterator it;
                 char result[1024 * 4];
 

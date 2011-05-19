@@ -84,12 +84,18 @@ public:
         int idx;
         int n;
 
-        void operator() (bool result)
+        void operator() (bool result, std::vector<libcage::cageaddr> &nodes)
         {
                 // print state
                 if (result) {
+						std::string s = "";
+						for(int i=0; i < nodes.size(); i++) {
+							s += nodes.at(i).id->to_string() + ",";
+						}
                         std::cout << "join: succeeded, n = "
                                   << n
+								  << "IDs: "
+								  << s
                                   << std::endl;
                 } else {
                         std::cout << "join: failed, n = "

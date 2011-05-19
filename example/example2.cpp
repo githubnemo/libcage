@@ -16,14 +16,21 @@ class join_callback
 public:
         int n;
 
-        void operator() (bool result)
+        void operator() (bool result, std::vector<libcage::cageaddr> &nodes)
         {
+				sleep(3);
                 // print state
-                if (result)
+                if (result) {
+						std::string s = "";
+						for(int i=0; i < nodes.size(); i++) {
+							s += nodes.at(i).id->to_string() + ", ";
+						}
                         std::cout << "join: succeeded, n = "
                                   << n
+								  << " others: "
+								  << s
                                   << std::endl;
-                else
+				} else
                         std::cout << "join: failed, n = "
                                   << n
                                   << std::endl;

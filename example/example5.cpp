@@ -28,7 +28,7 @@ public:
 class join_callback
 {
 public:
-        void operator() (bool result);
+        void operator() (bool result, std::vector<libcage::cageaddr> &nodes);
 };
 
 
@@ -57,7 +57,7 @@ sender(int fd, short ev, void *arg)
 }
 
 void
-join_callback::operator() (bool result)
+join_callback::operator() (bool result, std::vector<libcage::cageaddr> &nodes)
 {
         if (! result) {
                 std::cout << "join: failed" << std::endl;

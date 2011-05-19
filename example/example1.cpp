@@ -10,7 +10,7 @@
 libcage::cage *cage;
 
 void
-join_callback(bool result)
+join_callback(bool result, std::vector<libcage::cageaddr> &nodes)
 {
         if (result)
                 std::cout << "join: succeeded" << std::endl;

@@ -56,7 +56,7 @@ namespace libcage {
                 cage();
                 virtual ~cage();
 
-                typedef boost::function<void (bool)>
+                typedef boost::function<void (bool, std::vector<cageaddr>&)>
                 callback_join;
 
                 bool            open(int domain, uint16_t port,

@@ -483,9 +483,9 @@ namespace libcage {
         {
                 if (nodes.size() > 0) {
                         p_cage->m_dtun.register_node();
-                        func(true);
+                        func(true, nodes);
                 } else {
-                        func(false);
+                        func(false, nodes);
                 }
         }
 

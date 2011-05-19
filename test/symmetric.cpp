@@ -70,7 +70,7 @@ class join_callback
 public:
         int n;
 
-        void operator() (bool result)
+        void operator() (bool result, std::vector<libcage::cageaddr> &nodes)
         {
                 // print state
                 if (result)
