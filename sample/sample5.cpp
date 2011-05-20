@@ -166,7 +166,7 @@ client_callback::operator() (int desc, libcage::rdp_addr addr,
 }
 
 int
-main(int argc, char *argv)
+main(int argc, char **argv)
 {
 #ifdef WIN32
         // initialize winsock
