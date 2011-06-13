@@ -32,6 +32,7 @@
 #include "cage.hpp"
 
 #include <boost/foreach.hpp>
+#include <arpa/inet.h>
 
 #include "cagetypes.hpp"
 
@@ -511,6 +512,35 @@ namespace libcage {
         {
                 return m_id.to_string();
         }
+
+		std::string
+		cage::get_peer_addr(uint8_t *dst)
+        {
+				char *temp = NULL;
+                boost::shared_ptr<uint160_t> id(new uint160_t);
+
+                id->from_binary(dst, CAGE_ID_LEN);
+
+				cageaddr addr;
+
+				try {
+					addr = m_peers.get_addr(id);
+				} catch(std::out_of_range) {
+					return "not_found";
+				}
+
+				if (addr.domain == domain_inet) {
+						temp = new char[INET_ADDRSTRLEN];
+                        in_ptr in = boost::get<in_ptr>(addr.saddr);
+						inet_ntop(AF_INET, &(((sockaddr_in*)in.get())->sin_addr), temp, INET_ADDRSTRLEN);
+                } else if (addr.domain == domain_inet6) {
+						temp = new char[INET6_ADDRSTRLEN];
+                        in6_ptr in6 = boost::get<in6_ptr>(addr.saddr);
+						inet_ntop(AF_INET6, &(((sockaddr_in6*)in6.get())->sin6_addr), temp, INET6_ADDRSTRLEN);
+                }
+
+				return std::string(temp);
+		}
 
         void
         cage::get_id(void *addr) const

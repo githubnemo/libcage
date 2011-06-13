@@ -91,6 +91,7 @@ namespace libcage {
 
                 std::string     get_id_str() const;
                 void            get_id(void *addr) const;
+				std::string		get_peer_addr(uint8_t*);
                 node_state      get_nat_state() const { return m_nat.get_state(); }
 
                 void            set_global() { m_nat.set_state_global(); }
